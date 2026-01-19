@@ -1,0 +1,16 @@
+- name: Install Node Exporter on Web Server
+
+  hosts: web
+
+  become: yes
+
+  tasks:
+
+    - name: Install node-exporter
+
+      apt:
+
+        name: prometheus-node-exporter
+
+        state: present
+

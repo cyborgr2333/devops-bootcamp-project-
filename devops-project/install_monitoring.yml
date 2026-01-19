@@ -1,0 +1,41 @@
+---
+#- name: Install CloudWatch Agent
+#  hosts: all
+#  become: yes
+#  tasks:
+#    - name: Download CloudWatch Agent
+#      get_url:
+#        url: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+#        dest: /tmp/amazon-cloudwatch-agent.deb
+
+#    - name: Install package
+#      apt:
+#        deb: /tmp/amazon-cloudwatch-agent.deb
+
+#    - name: Start CloudWatch Agent
+#      service:
+#        name: amazon-cloudwatch-agent
+#        state: started
+#        enabled: yes
+
+
+- name: Setup Monitoring Server
+  hosts: monitoring
+  become: yes
+  tasks:
+    - name: Install Prometheus and Grafana
+      apt:
+        name: 
+          - prometheus
+          - grafana
+        state: present
+        update_cache: yes
+
+    - name: Start Services
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - prometheus
+        - grafana-server

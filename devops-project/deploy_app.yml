@@ -1,0 +1,35 @@
+---
+- name: Deploy Web App from ECR
+  hosts: web
+  become: yes
+  vars:
+    ecr_repo: "900896541336.dkr.ecr.ap-southeast-1.amazonaws.com/devops-bootcamp/final-project-sumantri"
+    image_tag: "latest"
+
+  tasks: 
+    - name: Login to ECR
+      shell: "/snap/bin/aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 900896541336.dkr.ecr.ap-southeast-1.amazonaws.com" 
+
+  
+
+
+    - name: Pull latest image from ECR
+      docker_image:
+        name: "{{ ecr_repo }}"
+        tag: "{{ image_tag }}"
+        source: pull
+
+    - name: Stop and remove existing container
+      docker_container:
+        name: my-web-app
+        state: absent
+
+    - name: Run the new container
+      docker_container:
+        name: my-web-app
+        image: "{{ ecr_repo }}:{{ image_tag }}"
+        state: started
+        restart_policy: always
+        published_ports:
+          - "80:80"
+

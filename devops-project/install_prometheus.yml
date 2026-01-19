@@ -1,0 +1,19 @@
+---
+- name: Install Prometheus on Monitoring Server
+  hosts: monitoring
+  become: yes
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Prometheus
+      apt:
+        name: prometheus
+        state: present
+
+    - name: Ensure Prometheus is started and enabled
+      service:
+        name: prometheus
+        state: started
+        enabled: yes
