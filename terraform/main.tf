@@ -41,3 +41,5 @@ resource "aws_instance" "monitoring_server" {
 resource "aws_ecr_repository" "project_repo" {
   name = "devops-bootcamp/final-project-sumantri" # Replace yourname
 }
+
+
