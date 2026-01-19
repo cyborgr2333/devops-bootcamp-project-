@@ -1,7 +1,15 @@
 Server Role - Private IP - Description
-Web Server,10.0.0.5,The target node running Node Exporter to broadcast system metrics.
-Ansible Controller,10.0.0.135,The orchestration engine used to automate software installation and configuration.
-Monitoring Server,10.0.0.136,"The central hub hosting Prometheus, Grafana, and the Cloudflare Tunnel agent."
+Web Server,
+10.0.0.5,
+The target node running Node Exporter to broadcast system metrics.
+
+Ansible Controller,
+.0.0.135,
+The orchestration engine used to automate software installation and configuration.
+
+Monitoring Server,
+10.0.0.136,
+"The central hub hosting Prometheus, Grafana, and the Cloudflare Tunnel agent."
 
 Key Features
 Automated Deployment: Used Ansible playbooks to ensure consistent installation of Prometheus, Grafana, and Node Exporter across all nodes.
@@ -14,3 +22,4 @@ Clone the Repo: git clone https://github.com/cyborgr2333/devops-bootcamp-project
 Deploy via Ansible: Run ansible-playbook -i inventory.ini setup_monitoring.yml.
 Start Tunnel: Ensure cloudflared service is active on the monitoring node.
 Access Dashboards: Navigate to grafana.sumantri-net.com.
+
