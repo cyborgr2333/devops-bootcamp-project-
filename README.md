@@ -1,5 +1,7 @@
 Server Role - Private IP - Description
 
+
+
 Web Server,
 
 10.0.0.5,
@@ -7,11 +9,14 @@ Web Server,
 The target node running Node Exporter to broadcast system metrics.
 
 
+
+
 Ansible Controller,
 
 10.0.0.135,
 
 The orchestration engine used to automate software installation and configuration.
+
 
 
 
@@ -23,7 +28,9 @@ Monitoring Server,
 
 
 
+
 Key Features
+
 
 Automated Deployment: Used Ansible playbooks to ensure consistent installation of Prometheus, Grafana, and Node Exporter across all nodes.
 
@@ -35,7 +42,9 @@ Visualization: Custom Dashboards (ID: 1860) implemented to monitor CPU, Memory, 
 
 
 
+
 How to Use
+
 
 Clone the Repo: git clone https://github.com/cyborgr2333/devops-bootcamp-project-.git
 
@@ -44,6 +53,7 @@ Deploy via Ansible: Run ansible-playbook -i inventory.ini setup_monitoring.yml.
 Start Tunnel: Ensure cloudflared service is active on the monitoring node.
 
 Access Dashboards: Navigate to grafana.sumantri-net.com.
+
 
 
 
